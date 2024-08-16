@@ -4,7 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androidexam.ui.homeScreen.HomeScreen
+import com.example.androidexam.ui.homeScreen.HomeViewModel
 import com.example.androidexam.ui.theme.AndroidExamTheme
 
 class MainActivity : ComponentActivity() {
@@ -12,8 +19,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModel : HomeViewModel = viewModel()
             AndroidExamTheme {
-                HomeScreen()
+                Scaffold(containerColor = Color.White) { paddingValues ->
+                    HomeScreen(modifier = Modifier.padding(paddingValues = paddingValues),
+                        viewModel = viewModel)
+                }
             }
         }
     }

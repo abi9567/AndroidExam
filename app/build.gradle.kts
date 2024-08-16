@@ -69,4 +69,6 @@ dependencies {
 
     //Coil Image for Asynchronous Loading Image
     implementation(libs.coil.compose)
+    implementation(libs.androidx.material)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
 }
