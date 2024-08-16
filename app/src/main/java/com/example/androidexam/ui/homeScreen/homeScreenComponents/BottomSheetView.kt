@@ -20,18 +20,20 @@ import com.example.androidexam.R
 import com.example.androidexam.data.FruitCategory
 
 @Composable
-fun BottomSheetView(fruitCategory : FruitCategory?) {
+fun BottomSheetView(categoryName : String?,
+                    totalFruits: Int?,
+                    characterCount : String?) {
 
     Column(modifier = Modifier
         .navigationBarsPadding()
         .padding(horizontal = 16.dp, vertical = 24.dp)
         .fillMaxWidth()) {
 
-        TitleDescriptionView(title = R.string.category_name, description = fruitCategory?.name)
+        TitleDescriptionView(title = R.string.category_name, description = categoryName)
         Spacer(modifier = Modifier.height(height = 8.dp))
-        TitleDescriptionView(title = R.string.total_fruits, description = "${ fruitCategory?.fruitList?.size }")
+        TitleDescriptionView(title = R.string.total_fruits, description = "$totalFruits")
         Spacer(modifier = Modifier.height(height = 8.dp))
-        TitleDescriptionView(title = R.string.top_3_character_count, description = "A : 35")
+        TitleDescriptionView(title = R.string.top_3_character_count, description = characterCount)
     }
 }
 

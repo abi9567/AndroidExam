@@ -1,9 +1,12 @@
 package com.example.androidexam.ui.homeScreen
 
+import android.util.Log
+import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import com.example.androidexam.data.FruitCategory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import java.util.Locale
 
 class HomeViewModel : ViewModel() {
 
@@ -15,14 +18,21 @@ class HomeViewModel : ViewModel() {
     private val _searchKey = MutableStateFlow<String?>(value = null)
     val searchKey : Flow<String?> = _searchKey
 
+    private val _characterCountString = MutableStateFlow<String?>(value = null)
+    val characterCountString : Flow<String?> = _characterCountString
+
+    fun setSearchKey(input : String?) {
+        _searchKey.value = input
+        filterFruits(input = input)
+    }
+
     fun setFruitCategory(selectedIndex : Int) {
         _selectedFruitCategory.value = fruitCategory.get(index = selectedIndex)
         setSearchKey(input = null)
     }
 
-    fun setSearchKey(input : String?) {
-        _searchKey.value = input
-        filterFruits(input = input)
+    init {
+        getTopThreeCharacterCount()
     }
 
     private fun filterFruits(input : String?) {
@@ -48,4 +58,23 @@ class HomeViewModel : ViewModel() {
         _selectedFruitCategory.value = fruitCategory.get(index = currentIndex ?: 0)
     }
 
+    fun getTopThreeCharacterCount() {
+        val currentSelectedFruitNameList = _selectedFruitCategory.value?.fruitList
+            ?.map { it?.name?.uppercase(Locale.US) }
+
+        val allFruitSingleString = currentSelectedFruitNameList?.joinToString(separator = "")
+        val removedSpaceFromString = allFruitSingleString?.replace(oldValue = " ", newValue = "")
+        val keyValueMap = removedSpaceFromString?.groupBy { it }?.entries?.sortedByDescending { it.value.size }
+        var itemSizeString = ""
+
+        for (i in 0 until 3) {
+            val item = keyValueMap?.getOrNull(index = i)
+            item?.let {
+                itemSizeString +=
+                    (if (i != 0) ", " else "") + ("${ item.key }" + "-" + "${ item.value.size }")
+            }
+        }
+
+        _characterCountString.value = itemSizeString
+    }
 }

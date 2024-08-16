@@ -44,10 +44,11 @@ import kotlinx.coroutines.launch
 fun HomeScreen(modifier : Modifier = Modifier,
                viewModel : HomeViewModel) {
 
-    val selectedFruitCategory by viewModel.selectedFruitCategory.collectAsState(initial = null)
     val searchKey by viewModel.searchKey.collectAsState(initial = null)
     val scope = rememberCoroutineScope()
     val bottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+    val selectedFruitCategory by viewModel.selectedFruitCategory.collectAsState(initial = null)
+    val characterCount by viewModel.characterCountString.collectAsState(initial = null)
 
     BackHandler(enabled = bottomSheetState.isVisible) {
         scope.launch {
@@ -59,7 +60,10 @@ fun HomeScreen(modifier : Modifier = Modifier,
         sheetState = bottomSheetState,
         sheetShape = MaterialTheme.shapes.medium.copy(bottomStart = CornerSize(0.dp), bottomEnd = CornerSize(0.dp)),
         sheetContent = {
-        BottomSheetView(fruitCategory = selectedFruitCategory)
+        BottomSheetView(
+            categoryName = selectedFruitCategory?.name,
+            totalFruits = selectedFruitCategory?.fruitList?.size,
+            characterCount = characterCount)
     }) {
 
         Box(modifier = modifier
@@ -91,7 +95,8 @@ fun HomeScreen(modifier : Modifier = Modifier,
                 .align(alignment = Alignment.BottomEnd)
                 .background(color = DotColor),
                 onClick = {
-                scope.launch { bottomSheetState.show() }
+                    viewModel.getTopThreeCharacterCount()
+                    scope.launch { bottomSheetState.show() }
             }) {
                 Icon(imageVector = Icons.Default.MoreVert,
                     tint = Color.White,
