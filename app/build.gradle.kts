@@ -71,4 +71,11 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.androidx.material)
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+
+    //XML
+    implementation ("androidx.appcompat:appcompat:1.7.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
 }
