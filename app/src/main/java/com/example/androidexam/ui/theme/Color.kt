@@ -12,3 +12,4 @@ val Pink40 = Color(0xFF7D5260)
 
 val LightGrayColor = Color(0xFFF0F0F0)
 val ItemColor = Color(0xFFC3FFD3)
+val DotColor = Color(0xFF0FDA45)

@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.androidexam.ui.theme.DotColor
 
 @Composable
 fun CustomPagerIndicator(
@@ -29,7 +30,7 @@ fun CustomPagerIndicator(
             Box(modifier = Modifier
                 .padding(horizontal = 2.dp)
                 .clip(shape = CircleShape)
-                .background(color = if (currentPosition == currentPage) Color.Magenta else Color.Gray)
+                .background(color = if (currentPosition == currentPage) DotColor else Color.Gray)
                 .size(size = 8.dp))
         }
     }

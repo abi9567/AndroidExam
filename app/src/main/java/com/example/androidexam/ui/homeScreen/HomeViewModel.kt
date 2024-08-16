@@ -12,11 +12,20 @@ class HomeViewModel : ViewModel() {
     private val _selectedFruitCategory = MutableStateFlow<FruitCategory?>(value = fruitCategory.first())
     val selectedFruitCategory : Flow<FruitCategory?> = _selectedFruitCategory
 
+    private val _searchKey = MutableStateFlow<String?>(value = null)
+    val searchKey : Flow<String?> = _searchKey
+
     fun setFruitCategory(selectedIndex : Int) {
         _selectedFruitCategory.value = fruitCategory.get(index = selectedIndex)
+        setSearchKey(input = null)
     }
 
-    fun filterFruits(input : String?) {
+    fun setSearchKey(input : String?) {
+        _searchKey.value = input
+        filterFruits(input = input)
+    }
+
+    private fun filterFruits(input : String?) {
 
         if (input.isNullOrEmpty()) {
             resetFruits()
