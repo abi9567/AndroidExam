@@ -33,6 +33,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    viewBinding {
+        enable = true
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -59,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,5 +74,12 @@ dependencies {
     //Coil Image for Asynchronous Loading Image
     implementation(libs.coil.compose)
     implementation(libs.androidx.material)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    //For XML
+    implementation ("androidx.appcompat:appcompat:1.7.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
 }
