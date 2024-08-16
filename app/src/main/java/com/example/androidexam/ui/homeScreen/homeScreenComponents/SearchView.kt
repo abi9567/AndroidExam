@@ -1,6 +1,9 @@
 package com.example.androidexam.ui.homeScreen.homeScreenComponents
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -31,27 +34,33 @@ fun SearchView(
     var value by remember { mutableStateOf<String?>(null) }
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
-    
-    OutlinedTextField(value = value ?: "",
-        shape = RoundedCornerShape(size = 8.dp),
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = LightGrayColor,
-            unfocusedContainerColor = LightGrayColor,
-            unfocusedBorderColor = LightGrayColor,
-            focusedBorderColor = LightGrayColor,
-        ),
-        leadingIcon = {
-            Icon(imageVector = Icons.Default.Search,
-                contentDescription = null)
-        },
-        modifier = Modifier.fillMaxWidth(),
-        keyboardActions = KeyboardActions(onDone = {
-            focusManager.clearFocus()
-            keyboardController?.hide()
-        }),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-        placeholder = { Text(text = "Search") },
-        onValueChange = { value = it
-            onValueChange(it)
-        })
+
+    Row(modifier = Modifier
+        .background(color = Color.White)
+        .padding(vertical = 4.dp)
+        .fillMaxWidth()) {
+
+        OutlinedTextField(value = value ?: "",
+            shape = RoundedCornerShape(size = 12.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = LightGrayColor,
+                unfocusedContainerColor = LightGrayColor,
+                unfocusedBorderColor = LightGrayColor,
+                focusedBorderColor = LightGrayColor,
+            ),
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Search,
+                    contentDescription = null)
+            },
+            modifier = Modifier.fillMaxWidth(),
+            keyboardActions = KeyboardActions(onDone = {
+                focusManager.clearFocus()
+                keyboardController?.hide()
+            }),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+            placeholder = { Text(text = "Search") },
+            onValueChange = { value = it
+                onValueChange(it)
+            })
+    }
 }

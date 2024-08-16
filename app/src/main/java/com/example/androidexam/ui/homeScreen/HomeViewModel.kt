@@ -7,9 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 class HomeViewModel : ViewModel() {
 
-    private val fruitCategory = FruitCategory.fruitList
-
-    val totalPageCount = fruitCategory.size
+    val fruitCategory = FruitCategory.fruitList
 
     private val _selectedFruitCategory = MutableStateFlow<FruitCategory?>(value = fruitCategory.first())
     val selectedFruitCategory : Flow<FruitCategory?> = _selectedFruitCategory

@@ -33,7 +33,7 @@ fun HomeScreen(modifier : Modifier = Modifier,
             contentPadding = PaddingValues(vertical = 16.dp)
         ) {
             item { HomeBannerSliderView(
-                totalPageCount = viewModel.totalPageCount,
+                fruitCategoryList = viewModel.fruitCategory,
                 onFruitCategoryChanged = viewModel::setFruitCategory
             ) }
 

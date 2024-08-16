@@ -13,15 +13,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.example.androidexam.data.FruitCategory
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeBannerSliderView(
-    totalPageCount : Int,
+    fruitCategoryList : List<FruitCategory?>?,
     onFruitCategoryChanged : (Int) -> Unit
 ) {
 
-    val pagerState = rememberPagerState { totalPageCount }
+    val pagerState = rememberPagerState { fruitCategoryList?.size ?: 0 }
 
     LaunchedEffect(key1 = pagerState.currentPage) {
         onFruitCategoryChanged(pagerState.currentPage)
@@ -33,7 +34,7 @@ fun HomeBannerSliderView(
             modifier = Modifier
                 .clip(shape = RoundedCornerShape(size = 16.dp))
                 .fillMaxWidth()) { position ->
-            HomeBannerView(position = "$position")
+            HomeBannerView(imageUrl = fruitCategoryList?.get(index = position)?.imageUrl)
         }
 
         Spacer(modifier = Modifier.height(height = 16.dp))

@@ -2,12 +2,15 @@ package com.example.androidexam.data
 
 data class FruitCategory(
     val index : Int,
+    val imageUrl : String?,
     val name : String?,
     var fruitList : List<Fruit?>?
 ) {
     companion object {
         val fruitList = listOf(
-            FruitCategory(name = "Citrus Fruits", index = 0, fruitList = listOf(
+            FruitCategory(name = "Citrus Fruits",
+                imageUrl = "https://cdn.firstcry.com/education/2022/11/29120033/Citrus-Fruits-Names-for-Preschoolers-and-Kids.jpg",
+                index = 0, fruitList = listOf(
                 Fruit(name = "Lemon", image = null, description = "A sour, yellow citrus fruit used in cooking and beverages."),
                 Fruit(name = "Orange", image = null, description = "A sweet, orange-colored citrus fruit."),
                 Fruit(name = "Lime", image = null, description = "A small, green citrus fruit often used in cooking and cocktails."),
@@ -40,7 +43,9 @@ data class FruitCategory(
                 Fruit(name = "Shonan Gold", image = null, description = "A sweet, hybrid citrus fruit developed in Japan.")
             )),
 
-            FruitCategory(name = "Berries", index = 1, fruitList = listOf(
+            FruitCategory(name = "Berries",
+                imageUrl = "https://media.istockphoto.com/id/499658564/photo/wild-berry-mix-strawberries-blueberries-blackberries-and-raspberries.jpg?s=612x612&w=0&k=20&c=H-hRK6piHD2TyIFZ2sezzduHJ2xYpKyoTil4776sklA=",
+                index = 1, fruitList = listOf(
                 Fruit(name = "Strawberry", image = null, description = "A sweet, red fruit often used in desserts and smoothies."),
                 Fruit(name = "Blueberry", image = null, description = "A small, round, blue fruit rich in antioxidants."),
                 Fruit(name = "Raspberry", image = null, description = "A red or black berry with a tart flavor, commonly used in desserts."),
@@ -73,7 +78,9 @@ data class FruitCategory(
                 Fruit(name = "Bearberry", image = null, description = "A small, red berry with a mild flavor, often used in traditional medicine.")
             )),
 
-            FruitCategory(name = "Stone Fruits", index = 2, fruitList = listOf(
+            FruitCategory(name = "Stone Fruits",
+                imageUrl = "https://cdn.sanity.io/images/bow86i8j/production/525094835cc33324c1ec39705b74c28db0b0f449-1800x920.jpg?fit=crop&h=630&q=75&w=1200",
+                index = 2, fruitList = listOf(
                 Fruit(name = "Peach", image = null, description = "A sweet, juicy fruit with fuzzy skin and a large pit."),
                 Fruit(name = "Nectarine", image = null, description = "A smooth-skinned fruit similar to a peach."),
                 Fruit(name = "Plum", image = null, description = "A sweet, juicy fruit with smooth skin and a large pit."),
@@ -106,7 +113,9 @@ data class FruitCategory(
                 Fruit(name = "Persimmon", image = null, description = "A sweet, orange fruit with a soft, jelly-like texture when ripe.")
             )),
 
-            FruitCategory(name = "Tropical Fruits", index = 3, fruitList = listOf(
+            FruitCategory(name = "Tropical Fruits",
+                imageUrl = "https://www.tastingtable.com/img/gallery/14-fruits-uncommon-in-the-u-s-you-need-to-try-once/intro-1679850799.jpg",
+                index = 3, fruitList = listOf(
                 Fruit(name = "Banana", image = null, description = "A long, curved fruit with soft, sweet flesh."),
                 Fruit(name = "Pineapple", image = null, description = "A tropical fruit with spiky skin and sweet, tangy flesh."),
                 Fruit(name = "Mango", image = null, description = "A sweet, juicy fruit with a large pit."),
@@ -139,7 +148,9 @@ data class FruitCategory(
                 Fruit(name = "Langsat", image = null, description = "A small, tropical fruit with sweet, translucent flesh.")
             )),
 
-            FruitCategory(name = "Melons", index = 4, fruitList = listOf(
+            FruitCategory(name = "Melons",
+                imageUrl = "https://nutrivore.com/wp-content/uploads/2022/12/Melons-1024x683.jpg",
+                index = 4, fruitList = listOf(
                 Fruit(name = "Watermelon", image = null, description = "A large, green-skinned fruit with sweet, juicy red flesh."),
                 Fruit(name = "Cantaloupe", image = null, description = "A round melon with orange flesh and a sweet, musky flavor."),
                 Fruit(name = "Honeydew", image = null, description = "A sweet, green-fleshed melon with a smooth rind."),

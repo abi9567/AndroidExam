@@ -31,7 +31,7 @@ import com.example.androidexam.ui.theme.ItemColor
 fun ListItemSingleView(fruit : Fruit?) {
 
     Row(modifier = Modifier
-        .clip(shape = RoundedCornerShape(size = 8.dp))
+        .clip(shape = RoundedCornerShape(size = 12.dp))
         .background(color = ItemColor)
         .padding(all = 8.dp)
         .fillMaxWidth(),
