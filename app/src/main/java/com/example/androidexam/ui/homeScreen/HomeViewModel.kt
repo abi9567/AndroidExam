@@ -31,10 +31,6 @@ class HomeViewModel : ViewModel() {
         setSearchKey(input = null)
     }
 
-    init {
-        getTopThreeCharacterCount()
-    }
-
     private fun filterFruits(input : String?) {
 
         if (input.isNullOrEmpty()) {
